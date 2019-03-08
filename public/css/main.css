@@ -1,0 +1,229 @@
+body{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+main{
+    display: block;
+    text-align: center;
+    margin-top: 8rem;
+    margin-bottom: 2rem;
+    min-height: calc(100vh - 5rem - 3rem);
+
+}
+body, html, main{
+    width: 100vw;
+}
+.hide{
+    display: none;
+}
+.overlay {  
+    display: block;
+    position: fixed;
+    top: 25%;
+    left: 25%;
+    width: 50%;
+    z-index: 100;
+    opacity: 100;
+    background: rgba(39, 42, 43, 0.8);
+    transition: opacity 1000ms ease-in-out;
+    margin: auto;
+    color: white;
+    border-radius: 20px;
+}
+
+.mainHeader{
+    display: flex;
+    flex-direction: row;
+    background-color: #020636;
+    height: 5rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+.brand{
+    display: flex;
+    margin: 0 1.25rem;
+    /* border: 1px solid red; */
+    width: 5rem;
+    /* background-color: white; */
+}
+.mobile_menu{
+    display: none
+}
+img{
+    width: 40px;
+}
+.headerItems{
+    align-items: center;
+    justify-content: center;
+    margin: 0 1rem;
+    padding: 0.7rem 0;
+    /* padding: 1.25rem 0; */
+    /* border: 1px solid red; */
+    display: flex
+}
+.headerItem{
+    align-items: center;
+    justify-content: center;
+    width: 8rem;
+    height: 5rem;
+    /* margin: 0 1.3rem; */
+    padding: 0rem 7rem;
+    list-style: none;
+    /* font-weight: bold; */
+    display: flex;
+    /* border: 1px solid red; */
+}
+.headerItem:hover,
+.active{
+    background-color: #233f08;
+    color: white;
+    border-bottom: 3px solid white;
+    font-weight: bold;
+}
+
+.headerItems a{
+    align-items: center;
+    text-decoration: none;
+    color: #ee711e;
+}
+
+.headerItems a:hover,
+.headerItems a:focus{
+    color: white;
+    font-weight: bold;
+}
+
+span.glyphicon-shopping-cart{
+    font-size: 2rem;
+    color: rgb(207, 26, 26);
+}
+
+.mainDiv .main-title{
+    font-size: 3rem;
+    background-color: #f0571bcc;
+}
+.messageDanger{
+    color: #020636;
+    background-color: #f36767;
+    border: solid red 1px;
+    font-weight: bold;
+    width: 33%;
+    margin: 10px auto;
+    padding: 0.8rem 0;
+}
+.messageDanger p{
+    margin: 0;
+}
+
+.resetPassword{
+    color: #ee711e;
+    margin: auto;
+    width: 50%;
+    cursor: pointer;
+}
+.resetPassword:hover,
+.resetPassword:focus{
+    font-weight: bold;
+    color: #ee711e;
+}
+
+  button{
+    /* width: 10rem; */
+    border-radius: 5px;
+    font: inherit;
+    margin: auto;
+}
+button:hover{
+    cursor: pointer;
+}
+
+footer{
+    background-color: black;
+    color: #ee711e;
+    text-align: center;
+    padding: 1.5rem 0;
+    height: 3rem;
+    width: 100vw;
+}
+
+.visible{
+    display: inline;
+}
+.hidden{
+    display: none;
+}
+.centered{
+    display: block;
+    margin: auto;
+}
+.btn{
+    margin-left: 10px;
+}
+.btn-commande{
+    background-color: #ee711e;
+    color:  #020636;
+    width: 20rem;
+    margin-top: 0px;
+}
+.btn-commande:hover{
+    background-color: #ee711e;
+    color:  #020636;
+    width: 20rem;
+    font-weight: bold;
+    margin-top: 0px;
+}
+.btn-primary{
+
+    background-color: #1275ff;
+    font-weight: bold;
+    font-size: 1.6rem;
+    /* font: inherit; */
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+    background-image: linear-gradient(#7dc5ee,#008cdd 85%,#30a2e4);
+
+}
+.btn-info{
+    /* background-color: #0a91cfad; */
+    background-color: #1275ff;
+    /* font: inherit; */
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+}
+.right{
+    display: flex;
+    margin-left: auto;
+    margin-right: 1rem;
+    align-items: center;
+}
+@media (max-width: 720px){
+    .headerItem{
+        display: none;
+    }
+    .mobile_menu{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin:0;
+        padding: 0;
+        border: 1px solid blue;
+        width: 100%;
+
+    }
+    .mobile_menu_ligne{
+        text-align: center;
+        border-bottom: 1px solid white;
+        width: 30px;
+        margin: 5px 0;
+        list-style: none;
+
+    }
+    span.glyphicon-shopping-cart{
+        font-size: 2rem;
+        color: rgb(207, 26, 26);
+    }
+    
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <% include ../head %>
+    <title>add-product</title>
+    <link rel="stylesheet" href="/css/add-product.css">
+</head>
+<body>
+    <% include ../header %>
+
+    <main>
+        <% include ../auth/login %>
+
+        
+        <div class="mainDiv">
+            <form action="/admin/edit-product" method="POST">
+                <div class="product_field">
+                    <div class="product_field_item">
+                        <label for="nom">Désignation: </label>
+                        <input type="text" name="nom" value="<%= product.nom %>">
+                    </div>
+                    <div class="product_field_item">
+                        <label for="prix">Prix: </label>
+                        <input type="text" name="prix" value="<%= product.prix %>">
+                        <span>€</span>
+                    </div>
+                    <div class="product_field_item">
+                        <label for="imageUrl">Image: </label>
+                        <input type="text" name="imageUrl" value="<%= product.imageUrl %>">
+                        <input type="hidden" value="<%= product.id %>" name="id">
+                    </div>
+        
+                </div>
+                <button type="submit">Modifier</button>
+            </form>
+                    
+        </div>
+    </main>            
+<% include ../end %>

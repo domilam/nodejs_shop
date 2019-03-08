@@ -1,0 +1,50 @@
+.card_items{
+    display: inline-block;
+    width: 15%;
+    padding: 20px;
+    box-shadow: 5px 5px 5px grey;
+    border-radius: 30px;
+
+}
+.image_product{
+    display: block;
+    margin: auto;
+    /* width: 150px; */
+    height: 100px;
+}
+.divbtn{
+    margin: auto;
+}
+.div-inline .link{
+    margin: 0 0rem;
+    display: inline-block;
+    width: 40%;
+    /* border: red solid 1px; */
+}
+
+.link a button{
+    width: 8rem;
+
+}
+.link a button:hover{
+    width: 8rem;
+
+}
+.pagination{
+    margin-top: 4rem;
+}
+.pagination a{
+    border: 1px solid #ee711e;
+    background-color: #ee711e7e;
+    padding: 0.5rem 2rem;
+    margin: 1rem;
+    text-decoration: none;
+}
+.pagination a:hover,
+.pagination a:active,
+.pagination a.active{
+    background-color: #ee711e;
+    font-weight: bold;
+    font-size: 2rem;
+
+}

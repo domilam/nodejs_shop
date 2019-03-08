@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>add-product</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/product.css">
+</head>
+<body>
+    <header class="mainHeader">
+        <div class="brand">
+            <ul class="mobile_menu">
+                <li class="mobile_menu_ligne"></li>
+                <li class="mobile_menu_ligne"></li>
+                <li class="mobile_menu_ligne"></li>
+            </ul>
+            <!-- <img src="" alt=""> -->
+        </div>
+        <ul class="headerItems">
+            <a href="/"><li class="headerItem">Accueil</li></a>
+            <a href="/admin/add-product"><li class="headerItem">Product</li></a>
+            <a href=""><li class="headerItem">Contact</li></a>
+        </ul>
+    </header>
+    <main>
+        <form action="/admin/add-product" method="POST">
+            <div class="product_field">
+                <div class="product_field_item">
+                    <label for="nom">Désignation: </label>
+                    <input type="text" name="nom">
+                </div>
+                <div class="product_field_item">
+                    <label for="prix">Prix: </label>
+                    <input type="text" name="prix">
+                </div>
+            </div>
+            <button type="submit">Envoyer</button>
+        </form>
+    </main>            
+</body>
+</html>

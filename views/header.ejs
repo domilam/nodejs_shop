@@ -1,0 +1,53 @@
+<header class="mainHeader">
+    <div class="brand">
+        <ul class="mobile_menu">
+            <li class="mobile_menu_ligne"></li>
+            <li class="mobile_menu_ligne"></li>
+            <li class="mobile_menu_ligne"></li>
+        </ul>
+        <img src="/images/bricoflex.svg" alt="">
+    </div>
+    <ul class="headerItems">
+        <a href="/"><li class="headerItem <%= path === '/' ? 'active': '' %>">Accueil</li></a>
+        <a href="/products"><li class="headerItem <%= path === '/admin/products' ? 'active': '' %>">Produits</li></a>
+        <% if (isAuthenticated) { %>
+            <a href="/admin/add-product"><li class="headerItem <%= path === '/admin/add-product' ? 'active': '' %>">Ajout</li></a>
+            <a href="/admin/manage-products"><li class="headerItem <%= path === '/admin/manage-products' ? 'active': '' %>">Modification</li></a>
+        <% } %>
+            <a href="#"><li class="headerItem">Contact</li></a>
+        <% if (isAuthenticated) { %>
+            <a href="/cart">
+                <li class="headerItem <%= path === '/cart' ? 'active': '' %>">
+                    <span class="glyphicon glyphicon-shopping-cart"></span>
+                    <span class="<%=countProduct >0 ? 'visible': 'hidden' %>"> (<%= countProduct %>)</span>
+                </li>
+            </a>
+            <a href="/orders">
+                <li class="headerItem <%= path === '/orders' ? 'active': '' %>">
+                    <button class="btn btn-primary btn-commande">
+                        <span class="glyphicon glyphicon-credit-card"></span> Commandes
+                    </button>
+                </li>
+            </a>
+        <% } %>
+    </ul>
+    <div class="right">
+            <!-- <li class="headerItem right <%= path === '/login' ? 'active': '' %>"> -->
+            <% if (!isAuthenticated) { %>
+                <a id="login-btn" class="btn btn-info btn-sm">
+                    <span class="glyphicon glyphicon-log-in"></span> Login
+                </a>
+                <a id="signup-btn" class="btn btn-info btn-sm">
+                    Signup
+                </a>
+    
+            <% }else{ %>
+                <a href="/logout" class="btn btn-info btn-sm">
+                    <span class="glyphicon glyphicon-log-out"></span> Logout
+                </a>
+            <% } %>
+            <!-- </li> -->
+
+    </div>
+        
+</header>

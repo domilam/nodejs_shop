@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <% include ../head %>
+    <title>Panier</title>
+    <link rel="stylesheet" href="/css/products.css">
+    <link rel="stylesheet" href="/css/displayCart.css">
+</head>
+<body>
+    <% include ../header %>
+    <main>
+        <% include ../auth/login %>
+        <% include ../auth/signup %>
+        <% include ../auth/resetPassword %>
+
+
+        
+        <div class="mainDiv">
+            <div>
+                <h1 class="main-title">PAIEMENT DE LA COMMANDE</h1>
+            </div>
+            <%if (products.length >0) { %>
+                <table>
+                    <tr>
+                        <th>Produit</th>
+                        <th>Prix</th>
+                        <th>Quantité</th>
+                        <th>Montant</th>
+                    </tr>
+                            
+                <% products.forEach(function(product) { %>
+                    <!-- <form action="/delete" method="POST"> -->
+                        <input type="hidden" value="<%= product._id %>" name="productId">
+                        <!-- <input type="hidden" name="_csrf" value="<%= csrfToken %>"> -->
+
+                        <tr>
+                            <td><%= product.nom %></td>
+                            <td class="center"><%= product.prix %></td>
+                            <td class="center"><%= product.quantity %></td>
+                            <td class="center"><%= product.quantity * product.prix %> €</td>
+                        </tr>
+
+                    <!-- </form> -->
+
+                <% }); %>
+                </table>
+                <section class="sum-products">
+                    <span>Total</span><span class="space"></span><span class="glyphicon glyphicon-arrow-right"><span class="space"></span></span><span><%= sumProducts %> €</span>
+                </section>
+                <div>
+
+                    <form action="/addOrder" method="POST">
+                        <script
+                            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                            data-key="pk_test_Dq1otwtZySK4QiU82L9qx5Fn"
+                            data-amount="<%= sumProducts *100 %>"
+                            data-name="Votre commande"
+                            data-description="Les produits de votre commande"
+                            data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                            data-locale="auto"
+                            data-currency="euro">
+                            
+                        </script>
+                    </form>                    
+                    <!-- <a href="/addOrder"><button class= "btn btn-primary spaceTop">Commander</button></a> -->
+                </div>
+            <% }else{ %>
+                <h2>Aucun produit !!!</h2>
+            <% } %>
+        </div>
+                
+    </main>
+<% include ../end %>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <% include ../head %>
+    <title>index</title>
+    <link rel="stylesheet" href="/css/manage-products.css">
+</head>
+<body>
+    <% include ../header %>
+    <main>
+        <% include ../auth/login %>
+        <% include ../auth/signup %>
+        <% include ../auth/resetPassword %>
+
+        <div class="mainDiv">
+            <div>
+                <h1 class="main-title">CATALOGUE DES PRODUITS</h1>
+            </div>
+                    
+            <%if (products.length >0) { %>
+                <section class="products">
+                    <% products.forEach(function(product) { %>
+                        <article class="card_items">
+                            <%if (product.imageUrl) { %>
+                                <img class="image_product" src="/<%= product.imageUrl %>" alt="">
+                            <% }else{ %>
+                                <img class="image_product" src="/images/noimage.jpg" alt="">
+                            <% } %>
+                            <p>Produit: <%= product.nom %></p>
+                            <p>Prix: € <%= product.prix %></p>
+                            <div class="div-inline">
+                                <div class="divbtn">
+                                    <div class="link">
+                                        <a href="/admin/edit-product/<%= product._id %>">
+                                            <button class="btn btn-primary" >Modifier</button>
+                                        </a>
+                                    </div>
+                                    <!-- <form action="/admin/delete-product" method="POST" class="link"> -->
+                                    <button class="btn btn-primary" type="button" onclick="deleteProduct(this)">Supprimer</button>
+                                    <input type="hidden" value="<%= product._id %>" name="prodId">
+                                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+                                    <!-- </form> -->
+                                </div>
+                            </div>
+                        </article>
+
+                                
+                    <% }); %>
+                </section>
+
+                <section class="pagination">
+                    <% if (currentPage > 1) { %>
+                        <a href="/admin/manage-products/?page=1">1</a>
+                    <% } %>
+                    <% if (hasPreviousPage && currentPage > 2) { %>
+                        <a href="/admin/manage-products/?page=<%= previousPage %>"><%= previousPage %></a>
+                    <% } %>
+                    <a href="/admin/manage-products/?page=<%= currentPage %>" class="active"><%= currentPage %></a>
+                    <% if (hasNextPage) { %>
+                        <a href="/admin/manage-products/?page=<%= nextPage %>"><%= nextPage %></a>
+                    <% } %>
+                </section>
+    
+            <% }else{ %>
+                <h2>Vous ne pouvez modifier aucun produit - Ajouter un produit !!!</h2>
+            <% } %>
+        </div>
+    </main>
+<% include ../end %>
+<script src="/js/admin.js"></script>

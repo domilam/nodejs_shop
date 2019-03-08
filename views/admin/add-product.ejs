@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <% include ../head %>
+    <title>add-product</title>
+    <link rel="stylesheet" href="/css/add-product.css">
+</head>
+<body>
+    <% include ../header %>
+
+    <main>
+        <% include ../auth/login %>
+        <% include ../auth/signup %>
+        <% include ../auth/resetPassword %>
+        
+        <div class="mainDiv">
+            <div>
+                <h1 class="main-title">AJOUT DU PRODUIT</h1>
+            </div>
+            <% if (errorMessage.length != 0) { %>
+                <% errorMessage.forEach(function(error) { %>
+                    <div class="messageDanger" role="alert">
+                        <p><%= error.msg %></p>
+                    </div>
+                <% }) %>
+            <% } %>
+
+            <form action="/admin/add-product" method="POST" enctype="multipart/form-data" novalidate>
+                <div class="product_field">
+                    <div class="form-group">
+                        <label for="nom">Désignation: </label>
+                        <input 
+                            class="<%= validationErrors.find(el => el.param === 'nom') ? 'inputError' : '' %>"
+                            type="text" 
+                            name="nom" 
+                            value="<%=oldRegistration.nom %>">
+                    </div>
+                    <div class="form-group">
+                        <label for="prix">Prix: </label>
+                        <input 
+                            class="<%= validationErrors.find(el => el.param === 'prix') ? 'inputError' : '' %>" 
+                            type="text" 
+                            name="prix" 
+                            value="<%=oldRegistration.prix %>">
+                        <span>€</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="image">Image: </label>
+                        <input class="<%= validationErrors.find(el => el.param === 'image') ? 'inputError' : '' %>" type="file" name="image">
+                    </div>
+        
+                </div>
+                <div>
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+                    <button class="btn btn-primary centered" type="submit">Envoyer</button>
+
+                </div>
+            </form>
+                    
+        </div>
+    </main>            
+<% include ../end %>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <% include ../head %>
+    <link rel="stylesheet" href="/css/manage-products.css">
+    <title>admin-product</title>
+</head>
+<body>
+    <% include ../header %>
+    <main>
+        <div class="mainDiv">
+            <%if (products.length >0) { %>
+                <% products.forEach(function(product) { %>
+                    <div class="card_items">
+                        <%if (product.imageUrl) { %>
+                            <img class="image_product" src="<%= product.imageUrl %>" alt="">
+                        <% }else{ %>
+                            <img class="image_product" src="/images/noimage.jpg" alt="">
+                        <% } %>
+                        <p>Produit: <%= product.nom %></p>
+                        <p>Prix: € <%= product.prix %></p>
+                        <div class="div-inline">
+                            <div class="link">
+                                <a href="/admin/edit-product/<%= product.id %>"><button>Modifier</button></a>
+                            </div>
+                            <form action="/admin/delete-product" method="POST" class="link">
+                                <a href="/delete-product"><button type="submit">Supprimer</button></a>
+                                <input type="hidden" value="<%= product.id %>" name="prodId">
+                            </form>
+                        </div>
+                    </div>
+                <% }); %>
+            <% }else{ %>
+                <h2>Aucun produit !!!</h2>
+            <% } %>
+        </div>
+    </main>
+<% include ../end %>

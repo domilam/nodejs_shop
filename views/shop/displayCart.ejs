@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <% include ../head %>
+    <title>Panier</title>
+    <link rel="stylesheet" href="/css/products.css">
+    <link rel="stylesheet" href="/css/displayCart.css">
+
+</head>
+<body>
+    <% include ../header %>
+    <main>
+        <div class="mainDiv">
+            <%if (products.length >0) { %>
+                <table>
+                    <tr>
+                        <th>Produit</th>
+                        <th>Prix</th>
+                        <th>Quantité</th>
+                    </tr>
+                            
+                <% products.forEach(function(product) { %>
+                    <tr>
+                        <td><%= product.nom %></td>
+                        <td><%= product.prix %></td>
+                        <td><%= product.productPanier.quantite %></td>
+                    </tr>
+                <% }); %>
+                </table>
+            <% }else{ %>
+                <h2>Aucun produit !!!</h2>
+            <% } %>
+        </div>
+                
+    </main>
+<% include ../end %>

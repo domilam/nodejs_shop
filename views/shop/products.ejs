@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <% include ../head %>
+    <title>index</title>
+    <link rel="stylesheet" href="/css/products.css">
+</head>
+<body>
+    <% include ../header %>
+    <main>
+        <div class="mainDiv">
+            <%if (products.length >0) { %>
+                <% products.forEach(function(product) { %>
+                    <div class="card_items">
+                        <form action="/add-cart" method="POST">
+                            <%if (product.imageUrl) { %>
+                                <img class="image_product" src="<%= product.imageUrl %>" alt="">
+                            <% }else{ %>
+                                <img class="image_product" src="/images/noimage.jpg" alt="">
+                            <% } %>
+                            <p>Produit: <%= product.nom %></p>
+                            <p>Prix: € <%= product.prix %></p>
+                            <input type="hidden" value="<%= product.id %>" name="prodId">
+                            <button type="submit">Ajout Panier</button>
+                        </form>
+                    </div>
+                <% }); %>
+            <% }else{ %>
+                <h2>Aucun produit !!!</h2>
+            <% } %>
+        </div>
+    </main>
+<% include ../end %>

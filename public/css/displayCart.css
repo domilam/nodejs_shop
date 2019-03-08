@@ -1,0 +1,70 @@
+.mainDiv{
+  width: 50%;
+  margin: auto;
+}
+
+table {
+    font-family: arial, sans-serif;
+    /* border-collapse: collapse; */
+    width: 100%;
+    padding: 20px;
+    box-shadow: 5px 5px 5px grey;
+    /* border-radius: 30px; */
+
+    margin:auto;
+    
+  }
+  tr{
+    border: 1px solid #dddddd;
+  }
+  td, th {
+    padding: 8px 5px;
+    margin: 0;
+    /* width: 100%; */
+
+  }
+  th{
+    text-align: center;
+  }
+  td{
+    text-align: left;
+  }
+  .center{
+    text-align: center;
+  }
+
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+  .close{
+    color: #ff3300;
+  }
+  .spaceTop{
+    margin-top: 20px;
+  }
+
+  .order-div{
+    margin-bottom: 20px;
+    /* border: 2px solid rgba(255, 51, 0, 0.541); */
+  }
+  .order-div_ncom{
+    text-align: left;
+    font-weight: bold;
+    color:  rgb(255, 51, 0);
+  }
+  .order-div_ncom span{
+    color: black;
+  }
+
+  .sum-products{
+    margin-top: 3rem;
+    text-align: right;
+    color: #808080;
+    font-weight: bold;
+    font-size: 2rem;
+  }
+  .space{
+    display:inline-block;
+    width: 50px;
+  }

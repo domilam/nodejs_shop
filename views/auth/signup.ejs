@@ -1,0 +1,48 @@
+        <div id="signup-overlay" class="<%= hide ? 'hide' : 'overlay' %>">
+            <div>
+                <h1 class="main-title">Enregistrez-vous</h1>
+            </div>
+                    
+            <form action="/signup" method="POST" novalidate>
+                <div class="product_field">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+                    <div class="form-group">
+                        <label for="usernames">Nom: </label>
+                        <input
+                            class="<%= validationErrors.find(el => el.param === 'usernames') ? 'inputError' : '' %>" 
+                            type="text" 
+                            name="usernames" 
+                            value="<%=oldRegistration.username %>">
+                    </div>
+                    <div class="form-group">
+                        <label for="emails">Email: </label>
+                        <input 
+                            class="<%= validationErrors.find(el => el.param === 'emails') ? 'inputError' : '' %>" 
+                            type="email" 
+                            name="emails" 
+                            value="<%=oldRegistration.email %>">
+                    </div>
+                    <div class="form-group">
+                        <label for="pwds">Mot de passe: </label>
+                        <input
+                            class="<%= validationErrors.find(el => el.param === 'pwds') ? 'inputError' : '' %>" 
+                            type="password" 
+                            name="pwds" 
+                            value="<%=oldRegistration.password %>">
+                    </div>
+                    <div class="form-group">
+                            <label for="confpwds">Retaper le mot de passe: </label>
+                            <input
+                                class="<%= validationErrors.find(el => el.param === 'confpwds') ? 'inputError' : '' %>" 
+                                type="password" 
+                                name="confpwds" 
+                                value="<%=oldRegistration.confirmPassword %>">
+                    </div>
+                </div>
+                <div class="btn-signup">
+                    <button class="btn btn-primary centered" type="submit">Signup</button>
+                </div>
+            </form>
+                    
+        </div>

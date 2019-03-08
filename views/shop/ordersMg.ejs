@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <% include ../head %>
+    <title>Panier</title>
+    <link rel="stylesheet" href="/css/products.css">
+    <link rel="stylesheet" href="/css/displayCart.css">
+</head>
+<body>
+    <% include ../header %>
+    <main>
+
+        
+        
+        <div class="mainDiv">
+            <div>
+                <h1 class="main-title">MES COMMANDES</h1>
+            </div>
+                    
+            <%if (orders.length >0) { 
+                orders.forEach(function(order) {%>
+                    <div class="order-div">
+                        <p class="order-div_ncom">Numéro de commmande: <span><%= order._id %></span></p>
+                        <table>
+                            <tr>
+                                <th>Produit</th>
+                                <th>Prix</th>
+                                <th>Quantité</th>
+                                <!-- <th></th> -->
+                            </tr>
+                                    
+                        <% order.items.forEach(function(product) { %>
+                            <form action="/delete" method="POST">
+                                <input type="hidden" value="<%= product._id %>" name="productId">
+
+                                <tr>
+                                    <td><%= product.nom %></td>
+                                    <td class="center"><%= product.prix %></td>
+                                    <td class="center"><%= product.quantity %></td>
+                                    <!-- <td>
+                                        <button type="submit" class="close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </td> -->
+                                </tr>
+                            </form>
+    
+                        <% }); %>
+                        </table>
+                    </div>
+                <% }); %>
+            <% }else{ %>
+                <h2>Aucune commande !!!</h2>
+            <% } %>
+        </div>
+                
+    </main>
+<% include ../end %>

@@ -1,0 +1,44 @@
+#login-overlay form,
+#signup-overlay form,
+#reset-overlay form{
+    display: block;
+    position: relative;
+    width: 100%;
+    /* height: 20rem; */
+    padding: 20px;
+    /* box-shadow: 5px 5px 5px grey; */
+    /* border-radius: 30px; */
+    text-align: left;
+    margin-bottom: 1rem;
+}
+#login-overlay .form-group,
+#signup-overlay .form-group,
+#reset-overlay .form-group{
+    display: block;
+    margin: 1rem 0;
+}
+#login-overlay .form-group label,
+#signup-overlay .form-group label,
+#reset-overlay .form-group label{
+    display: inline-block;
+    width: 16rem;
+    margin-left: 2rem;
+    text-align: left;
+}
+#login-overlay .form-group input,
+#signup-overlay .form-group input,
+#reset-overlay .form-group input{
+    display: inline-block;
+    width: 30rem;
+    color: black;
+}
+#login-overlay .product_field_item span
+#signup-overlay .product_field_item span,
+#reset-overlay .product_field_item span{
+    display: inline-block;
+    width: 1rem;
+}
+
+.form-group input.inputError{
+    border-color: red;
+}
