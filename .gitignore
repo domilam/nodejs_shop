@@ -3,3 +3,4 @@ app_mongo_prod.js
 ./controllers/authController_prod.js
 ./util/databaseMongo_prod.js
 ./util/databaseSeq_prod.js
+controllers/readme.md
