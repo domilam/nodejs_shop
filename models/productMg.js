@@ -1,4 +1,4 @@
-const getDb = require('../util/databaseMongo_prod').getDb;
+const getDb = require('../util/databaseMongo').getDb;
 const {ObjectId} = require('mongodb');
 const LIMIT_PRODUCTS_DISPLAYED = 12;
 exports.limit_prod = LIMIT_PRODUCTS_DISPLAYED;

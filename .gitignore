@@ -1,6 +1,6 @@
 node_modules
-app_mongo_prod.js
-./controllers/authController_prod.js
-./util/databaseMongo_prod.js
-./util/databaseSeq_prod.js
+app_mongo.js
+controllers/authController.js
+util/databaseMongo.js
+util/databaseSeq.js
 controllers/readme.md

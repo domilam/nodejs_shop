@@ -1,4 +1,4 @@
-const getDb = require('../util/databaseMongo_prod').getDb;
+const getDb = require('../util/databaseMongo').getDb;
 const mongoDb = require('mongodb');
 const ObjectId = mongoDb.ObjectId;
 
