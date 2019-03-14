@@ -5,15 +5,17 @@ const bcryptjs = require('bcryptjs'); /* package to crypt a password */
 const crypto = require('crypto'); /* package to create a token */
 require('datejs');
 
-const SENDGRID_KEY = require('../util/keys').SENDGRID_KEY;
+// const SENDGRID_KEY = require('../util/keys').SENDGRID_KEY;
+// const sgTransport = require('nodemailer-sendgrid-transport'); /* package to manage sendgrid with nodemailer */
+// const transporter = nodemailer.createTransport(sgTransport({
+//     service: 'gmail',
+//     auth: {
+//         // api_key: SENDGRID_KEY
+//     }
+// }));
 
-const nodemailer = require('nodemailer'); /* package to manage a nodemaileer */
-const sgTransport = require('nodemailer-sendgrid-transport'); /* package to manage sendgrid with nodemailer */
-const transporter = nodemailer.createTransport(sgTransport({
-    auth: {
-        api_key: SENDGRID_KEY
-    }
-}));
+const transporter = require('../util/keys').transporter;
+
 const { validationResult } = require('express-validator/check');
 
 exports.postLoginCtrl = (req, res, next) => {
@@ -115,10 +117,12 @@ exports.postSignupCtrl = (req, res, next) => {
             }
             const user = new User(username,email,hashedPassword, undefined, undefined, {items: []},);
             console.log('seeeeennnnnnd Mail');
+
             transporter.sendMail({
+                from: 'contact@japplique.com',
                 to: email,
-                from: 'dominique.lameynardie@laposte.net',
                 subject: "Validation d'inscription",
+                text: 'Vous êtes inscrit chez Bricoflex Shop',
                 html: '<h1>Vous êtes inscrit chez Bricoflex Shop</h1>'
             })
             .then(result => {
