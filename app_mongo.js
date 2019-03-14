@@ -4,6 +4,7 @@ const bodyParser = require('body-parser'); /* to parse body request */
 const mongoConnect = require('./util/databaseMongo').mongoConnect;
 const session = require('express-session'); /* package to manage session with express */
 const MongoDBStore = require('connect-mongodb-session')(session); /* package to manage session with mongodb */
+const SESSION_SECRET = require('./util//keys').sessionSecret;
 const MONGODB_URI = require('./util/databaseMongo').mongodb_uri;
 const getDb = require('./util/databaseMongo').getDb;
 const mongoDb = require('mongodb');
@@ -55,7 +56,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use(multer({storage: fileStorage, fileFilter: fileFilter}).single('image'))
 app.use(session({
-    secret: '', //add your secret key
+    secret: SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     store: store

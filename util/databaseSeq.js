@@ -1,7 +1,8 @@
-//rename this file databaseSeq.js
 
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize('magasin', '', '',{ // add your ident and password sql database
+const sequelizeKey = require('./keys').sequelizeKey;
+
+const sequelize = new Sequelize('magasin', sequelizeKey.user, sequelizeKey.pwd,{
     host: 'localhost',
     dialect: 'mysql',
     pool: {

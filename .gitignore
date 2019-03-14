@@ -1,6 +1,3 @@
 node_modules
-app_mongo.js
-controllers/authController.js
-util/databaseMongo.js
-util/databaseSeq.js
 controllers/readme.md
+util/keys.js

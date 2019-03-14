@@ -1,10 +1,9 @@
-//rename this file databaseMongo.js after you add the mongo URI
-
 const mongodb = require('mongodb');
+const MONGODB_URI = require('./keys.js').mongoUrl;
+
 const MongoClient = mongodb.MongoClient;
 // ?retryWrites=true
 let _db;
-const MONGODB_URI = '';//add your mongo URI
 const mongoConnect = (callback) =>{
     MongoClient.connect(MONGODB_URI)
     .then(client => {
