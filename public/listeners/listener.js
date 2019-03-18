@@ -16,6 +16,9 @@ var loginBtn = document.getElementById('login-btn');
 var signupBtn = document.getElementById('signup-btn');
 var resetPasswordBtn = document.getElementById('reset-password-btn');
 
+var dropDownMenu =  document.getElementById('dropdown');
+console.log(dropDownMenu);
+
 console.log(loginOverlay);
 console.log(loginBtn);
 if (loginBtn){
@@ -95,3 +98,7 @@ signupOverlay.addEventListener('click', e=>{
     e.stopPropagation();
 });
 
+dropDownMenu.addEventListener('click', e=>{
+    dropDownMenu.classList.toggle("open");
+    e.stopPropagation();
+})

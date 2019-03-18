@@ -1,12 +1,12 @@
 .mainDiv{
     margin: auto;
-    width: 40%;
+    width: 70%;
     min-height: 50vh;
 }
 form{
     display: block;
     width: 100%;
-    height: 20rem;
+    /* height: 20rem; */
     padding: 20px;
     box-shadow: 5px 5px 5px grey;
     border-radius: 30px;
@@ -29,4 +29,44 @@ form{
 .product_field_item span{
     display: inline-block;
     width: 1rem;
+}
+
+.div_button{
+    text-align: center;
+}
+@media (max-width: 1220px){
+    .mainDiv{
+        margin: auto;
+        width: 70%;
+        min-height: 50vh;
+    }
+}
+@media (max-width: 768px){
+    .mainDiv{
+        margin: auto 10px;
+        width: 100%;
+        /* min-height: 50vh; */
+    }
+    .col-sm-12{
+        padding-left: 0px;
+    }
+    .div_button{
+        text-align: center;
+    }
+    .form-group input{
+        display: inline;
+        width: 18rem;
+        margin-bottom: 20px;
+    }
+    .form-group label{
+        display:inline-block;
+    }
+    /* .form_element{
+        text-align: center;
+    } */
+    .product_field{
+        text-align: left;
+
+    }
+    
 }

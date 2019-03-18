@@ -5,21 +5,22 @@
     <link rel="stylesheet" href="/css/manage-products.css">
 </head>
 <body>
-    <% include ../header %>
-    <main>
-        <% include ../auth/login %>
-        <% include ../auth/signup %>
-        <% include ../auth/resetPassword %>
-
-        <div class="mainDiv">
-            <div>
-                <h1 class="main-title">CATALOGUE DES PRODUITS</h1>
+    <div class="container-fluid">
+        <% include ../header %>
+        <main class="mainDiv row">
+            <% include ../auth/login %>
+            <% include ../auth/signup %>
+            <% include ../auth/resetPassword %>
+            <div class="row">
+                <div class="col-sm-12 main-title">
+                    <h1 class="main-title">CATALOGUE DES PRODUITS</h1>
+                </div>
             </div>
-                    
+                            
             <%if (products.length >0) { %>
-                <section class="products">
+                <section class="row products">
                     <% products.forEach(function(product) { %>
-                        <article class="card_items">
+                        <article class="col-sm-3 card_items">
                             <%if (product.imageUrl) { %>
                                 <img class="image_product" src="/<%= product.imageUrl %>" alt="">
                             <% }else{ %>
@@ -31,11 +32,11 @@
                                 <div class="divbtn">
                                     <div class="link">
                                         <a href="/admin/edit-product/<%= product._id %>">
-                                            <button class="btn btn-primary" >Modifier</button>
+                                            <button class="btn btn-primary glyph-manage" ><span class="glyphicon glyphicon-pencil"></span></button>
                                         </a>
                                     </div>
                                     <!-- <form action="/admin/delete-product" method="POST" class="link"> -->
-                                    <button class="btn btn-primary" type="button" onclick="deleteProduct(this)">Supprimer</button>
+                                    <button class="btn btn-primary glyph-manage" type="button" onclick="deleteProduct(this)"><span class="glyphicon glyphicon-trash"></span></button>
                                     <input type="hidden" value="<%= product._id %>" name="prodId">
                                     <input type="hidden" name="_csrf" value="<%= csrfToken %>">
 
@@ -47,24 +48,24 @@
                                 
                     <% }); %>
                 </section>
-
-                <section class="pagination">
-                    <% if (currentPage > 1) { %>
-                        <a href="/admin/manage-products/?page=1">1</a>
-                    <% } %>
-                    <% if (hasPreviousPage && currentPage > 2) { %>
-                        <a href="/admin/manage-products/?page=<%= previousPage %>"><%= previousPage %></a>
-                    <% } %>
-                    <a href="/admin/manage-products/?page=<%= currentPage %>" class="active"><%= currentPage %></a>
-                    <% if (hasNextPage) { %>
-                        <a href="/admin/manage-products/?page=<%= nextPage %>"><%= nextPage %></a>
-                    <% } %>
-                </section>
-    
+                <div class="row">
+                    <section class="pagination col-sm-12">
+                        <% if (currentPage > 1) { %>
+                            <a href="/admin/manage-products/?page=1">1</a>
+                        <% } %>
+                        <% if (hasPreviousPage && currentPage > 2) { %>
+                            <a href="/admin/manage-products/?page=<%= previousPage %>"><%= previousPage %></a>
+                        <% } %>
+                        <a href="/admin/manage-products/?page=<%= currentPage %>" class="active"><%= currentPage %></a>
+                        <% if (hasNextPage) { %>
+                            <a href="/admin/manage-products/?page=<%= nextPage %>"><%= nextPage %></a>
+                        <% } %>
+                    </section>
+                </div>
             <% }else{ %>
                 <h2>Vous ne pouvez modifier aucun produit - Ajouter un produit !!!</h2>
             <% } %>
-        </div>
-    </main>
-<% include ../end %>
-<script src="/js/admin.js"></script>
+        </main>
+        <% include ../end %>
+    </div>
+    <script src="/js/admin.js"></script>

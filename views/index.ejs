@@ -4,21 +4,25 @@
     <title>index</title>
 </head>
 <body>
-    <% include ./header %>
-    <main>
-        <% include ./auth/login %>
-        <% include ./auth/signup %>
-        <% include ./auth/resetPassword %>
-    
-        <div class="mainDiv">
-            <% if (errorMessage.length != 0) { %>
-                <% errorMessage.forEach(function(error) { %>
-                    <div class="messageDanger" role="alert">
-                        <p><%= error.msg %></p>
-                    </div>
-                <% }) %>
-            <% } %>
-           
-        </div>
-    </main>
-<% include ./end %>
+    <div class="container-fluid">
+            <% include ./header %>
+            <main class="container">
+                <% include ./auth/login %>
+                <% include ./auth/signup %>
+                <% include ./auth/resetPassword %>
+            
+                <div class="mainDiv row">
+                    <% if (errorMessage.length != 0) { %>
+                        <% errorMessage.forEach(function(error) { %>
+                            <div class="messageDanger" role="alert">
+                                <p><%= error.msg %></p>
+                            </div>
+                        <% }) %>
+                    <% } %>
+                   
+                </div>
+            </main>
+        <% include ./end %>
+        
+
+    </div>

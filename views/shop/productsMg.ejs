@@ -5,28 +5,31 @@
     <link rel="stylesheet" href="/css/products.css">
 </head>
 <body>
-    <% include ../header %>
-    <main>
+    <div class="container-fluid">
+        <% include ../header %>
         <% include ../auth/login %>
         <% include ../auth/signup %>
         <% include ../auth/resetPassword %>
-
-        <div class="mainDiv">
-            <div>
-                <h1 class="main-title">CATALOGUE DES PRODUITS</h1>
-            </div>
+        <main class="mainDiv row">
+            <div class="row">
+                <div class="col-sm-12 main-title">
+                    <h1 class="main-title">CATALOGUE DES PRODUITS</h1>
+                </div>
         
+            </div>
+            
             <%if (products.length >0) { %>
-
-                <section class="products">
+                <section class="row products">
+                    <div class="products_details">
+                        
+                    </div>
                     <% products.forEach(function(product) { %>
-                        <div class="card_items">
-                            <form action="/add-cart" method="POST">
-                                <%if (product.imageUrl) { %>
-                                    <img class="image_product" src="/<%= product.imageUrl %>" alt="">
-                                <% }else{ %>
-                                    <img class="image_product" src="/images/noimage.jpg" alt="">
-                                <% } %>
+                            <form class="col-sm-3 card_items" action="/add-cart" method="POST">
+                                        <%if (product.imageUrl) { %>
+                                            <img class="image_product" src="/<%= product.imageUrl %>" alt="">
+                                        <% }else{ %>
+                                            <img class="image_product" src="/images/noimage.jpg" alt="">
+                                        <% } %>
                                 <p>Produit: <%= product.nom %></p>
                                 <p>Prix: € <%= product.prix %></p>
                                 <input type="hidden" value="<%= product._id %>" name="prodId">
@@ -37,30 +40,31 @@
                                     </button>
                                 <% } %>
                                 <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-    
+
                             </form>
-                        </div>
                                     
                     <% }); %>
                 </section>
-        
-                <section class="pagination">
-                    <% if (currentPage > 1) { %>
-                        <a href="/products/?page=1">1</a>
-                    <% } %>
-                    <% if (hasPreviousPage && currentPage > 2) { %>
-                        <a href="/products/?page=<%= previousPage %>"><%= previousPage %></a>
-                    <% } %>
-                    <a href="/products/?page=<%= currentPage %>" class="active"><%= currentPage %></a>
-                    <% if (hasNextPage) { %>
-                        <a href="/products/?page=<%= nextPage %>"><%= nextPage %></a>
-                    <% } %>
-                </section>
-                
+                <div class="row">
+                    <section class="pagination col-sm-12">
+                        <% if (currentPage > 1) { %>
+                            <a href="/products/?page=1">1</a>
+                        <% } %>
+                        <% if (hasPreviousPage && currentPage > 2) { %>
+                            <a href="/products/?page=<%= previousPage %>"><%= previousPage %></a>
+                        <% } %>
+                        <a href="/products/?page=<%= currentPage %>" class="active"><%= currentPage %></a>
+                        <% if (hasNextPage) { %>
+                            <a href="/products/?page=<%= nextPage %>"><%= nextPage %></a>
+                        <% } %>
+                    </section>
+                </div>    
             <% }else{ %>
                 <h2>Aucun produit !!!</h2>
             <% } %>
-
-        </div>
-    </main>
-<% include ../end %>
+                
+    
+        </main>
+        
+        <% include ../end %>
+    </div>

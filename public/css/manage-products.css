@@ -1,16 +1,29 @@
+.products{
+    height: 100%;
+    display: inline-block
+}
 .card_items{
     display: inline-block;
-    width: 15%;
+    /* width: 15%; */
     padding: 20px;
     box-shadow: 5px 5px 5px grey;
     border-radius: 30px;
+    margin: auto;
+    text-align: center;
+    width: 250px;
+    width: 250px;
+    height: 230px;
 
 }
 .image_product{
     display: block;
     margin: auto;
-    /* width: 150px; */
-    height: 100px;
+    /* width: 100%; */
+    max-width: 100px;
+    min-width: 100px;
+    max-height: 100px;
+    /* height: 100px; */
+    /* border: 1px solid grey; */
 }
 .divbtn{
     margin: auto;
@@ -22,14 +35,19 @@
     /* border: red solid 1px; */
 }
 
-.link a button{
-    width: 8rem;
-
+.glyph-manage{
+    width: 3rem;
+    height: 3.1rem;
+    padding: 0 0;
 }
-.link a button:hover{
-    width: 8rem;
-
+.glyph-manage span{
+    font-size: 1.8rem;
+    text-align: center
 }
+/* .link a button:hover{
+    width: 4rem;
+
+} */
 .pagination{
     margin-top: 4rem;
 }
