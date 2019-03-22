@@ -71,7 +71,7 @@ table {
   @media (max-width: 768px){
     .mainDiv{
         width: 100%;
-        margin: 5rem 1.2rem;
+        margin: 5rem 0;
     }
     
 }

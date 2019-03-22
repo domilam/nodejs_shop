@@ -34,6 +34,10 @@ console.log(loginOverlay);
 console.log(loginBtn);
 if (loginBtn){
     loginBtn.addEventListener('click', function(e){
+        if (toArray(navbar_collapse.classList).indexOf('in') != -1){
+            navbar_collapse.classList.toggle("in");
+        }
+    
         loginOverlay.classList.add("overlay");
         loginOverlay.classList.remove("hide");
         signupOverlay.classList.remove("overlay");
@@ -53,6 +57,10 @@ if (loginBtn){
 
 if (signupBtn){
     signupBtn.addEventListener('click', function(e){
+        if (toArray(navbar_collapse.classList).indexOf('in') != -1){
+            navbar_collapse.classList.toggle("in");
+        }
+    
         signupOverlay.classList.add("overlay");
         signupOverlay.classList.remove("hide");
         loginOverlay.classList.remove("overlay");
