@@ -11,60 +11,72 @@
         <% include ../auth/signup %>
         <% include ../auth/resetPassword %>
         <main class="mainDiv row">
-            <div class="row">
-                <div class="col-sm-12 main-title">
-                    <h1 class="main-title">CATALOGUE DES PRODUITS</h1>
+            <!-- <div class="hidden-xs col-sm-2 side_left_menu">
+                <p>Recherche</p>
+                <div class="recherche">
+                    <input type="text"><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a>
                 </div>
-        
-            </div>
-            
-            <%if (products.length >0) { %>
-                <section class="row products">
-                    <div class="products_details">
-                        
-                    </div>
-                    <% products.forEach(function(product) { %>
-                            <form class="col-sm-3 card_items" action="/add-cart" method="POST">
-                                        <%if (product.imageUrl) { %>
-                                            <img class="image_product" src="/<%= product.imageUrl %>" alt="">
-                                        <% }else{ %>
-                                            <img class="image_product" src="/images/noimage.jpg" alt="">
-                                        <% } %>
-                                <p>Produit: <%= product.nom %></p>
-                                <p>Prix: € <%= product.prix %></p>
-                                <input type="hidden" value="<%= product._id %>" name="prodId">
-                                <% if (isAuthenticated) { %>
-                                    <button class="btn btn-primary" type="submit">
-                                        <span class="glyphicon glyphicon-plus-sign"></span>
-                                        <span class="glyphicon glyphicon-arrow-right"></span> Panier
-                                    </button>
-                                <% } %>
-                                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <p>Categories</p>
 
-                            </form>
-                                    
-                    <% }); %>
-                </section>
-                <div class="row">
-                    <section class="pagination col-sm-12">
-                        <% if (currentPage > 1) { %>
-                            <a href="/products/?page=1">1</a>
+            </div> -->
+            <div class="col-xs-12 col-sm-12">
+                    <div class="row">
+                            <div class="col-sm-12">
+                                <h1 class="main-title">CATALOGUE DES PRODUITS</h1>
+                            </div>
+                    
+                        </div>
+                        
+                        <%if (products.length >0) { %>
+                            <section class="row products">
+                                        <% products.forEach(function(product) { %>
+                                            <form class="col-sm-3 card_items" action="/add-cart" method="POST">
+                                                        <%if (product.imageUrl) { %>
+                                                            <img class="image_product" src="/<%= product.imageUrl %>" alt="">
+                                                        <% }else{ %>
+                                                            <img class="image_product" src="/images/noimage.jpg" alt="">
+                                                        <% } %>
+                                                <p>Produit: <%= product.nom %></p>
+                                                <p>Prix: € <%= product.prix %></p>
+                                                <input type="hidden" value="<%= product._id %>" name="prodId">
+                                                <% if (isAuthenticated) { %>
+                                                    <button class="btn btn-primary" type="submit">
+                                                        <span class="glyphicon glyphicon-plus-sign"></span>
+                                                        <span class="glyphicon glyphicon-arrow-right"></span> Panier
+                                                    </button>
+                                                <% } %>
+                                                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                
+                                            </form>
+                                                    
+                                    <% }); %>
+                                        
+                            </section>
+                            <div class="row">
+                                <section class="pagination col-sm-12">
+                                    <% if (currentPage > 1) { %>
+                                        <a href="/products/?page=1">1</a>
+                                    <% } %>
+                                    <% if (hasPreviousPage && currentPage > 2) { %>
+                                        <a href="/products/?page=<%= previousPage %>"><%= previousPage %></a>
+                                    <% } %>
+                                    <a href="/products/?page=<%= currentPage %>" class="active"><%= currentPage %></a>
+                                    <% if (hasNextPage) { %>
+                                        <a href="/products/?page=<%= nextPage %>"><%= nextPage %></a>
+                                    <% } %>
+                                </section>
+                            </div>    
+                        <% }else{ %>
+                            <h2>Aucun produit !!!</h2>
                         <% } %>
-                        <% if (hasPreviousPage && currentPage > 2) { %>
-                            <a href="/products/?page=<%= previousPage %>"><%= previousPage %></a>
-                        <% } %>
-                        <a href="/products/?page=<%= currentPage %>" class="active"><%= currentPage %></a>
-                        <% if (hasNextPage) { %>
-                            <a href="/products/?page=<%= nextPage %>"><%= nextPage %></a>
-                        <% } %>
-                    </section>
-                </div>    
-            <% }else{ %>
-                <h2>Aucun produit !!!</h2>
-            <% } %>
+            
+
+
+            </div>
                 
     
         </main>
         
         <% include ../end %>
     </div>
+</body>

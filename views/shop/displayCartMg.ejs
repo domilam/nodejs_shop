@@ -6,60 +6,60 @@
     <link rel="stylesheet" href="/css/displayCart.css">
 </head>
 <body>
-    <% include ../header %>
-    <main>
+    <div class="container-fluid">
+        <% include ../header %>
         <% include ../auth/login %>
         <% include ../auth/signup %>
         <% include ../auth/resetPassword %>
 
 
-        
-        <div class="mainDiv">
-            <div>
-                <h1 class="main-title">MON PANIER</h1>
-            </div>
-            <%if (products.length >0) { %>
-                <table>
-                    <tr>
-                        <th>Produit</th>
-                        <th>Prix</th>
-                        <th>Quantité</th>
-                        <th>Montant</th>
-                        <th></th>
-                    </tr>
-                            
-                <% products.forEach(function(product) { %>
-                    <form action="/delete" method="POST">
-                        <input type="hidden" value="<%= product._id %>" name="productId">
-                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-
-                        <tr>
-                            <td><%= product.nom %></td>
-                            <td class="center"><%= product.prix %></td>
-                            <td class="center"><%= product.quantity %></td>
-                            <td class="center"><%= product.quantity * product.prix %> €</td>
-
-                            <td>
-                                <button type="submit" class="close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </td>
-                        </tr>
-
-                    </form>
-
-                <% }); %>
-                </table>
-                <section class="sum-products">
-                    <span>Total</span><span class="space"></span><span class="glyphicon glyphicon-arrow-right"><span class="space"></span></span><span><%= sumProducts %> €</span>
-                </section>
+        <main class="mainDiv row">
                 <div>
-                    <a href="/payment"><button class= "btn btn-primary spaceTop">Commander</button></a>
+                    <h1 class="main-title">MON PANIER</h1>
                 </div>
-            <% }else{ %>
-                <h2>Aucun produit !!!</h2>
-            <% } %>
-        </div>
-                
-    </main>
-<% include ../end %>
+                <%if (products.length >0) { %>
+                    <table>
+                        <tr>
+                            <th>Produit</th>
+                            <th>Prix</th>
+                            <th>Quantité</th>
+                            <th>Montant</th>
+                            <th></th>
+                        </tr>
+                                
+                    <% products.forEach(function(product) { %>
+                        <form action="/delete" method="POST">
+                            <input type="hidden" value="<%= product._id %>" name="productId">
+                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+                            <tr>
+                                <td><%= product.nom %></td>
+                                <td class="center"><%= product.prix %></td>
+                                <td class="center"><%= product.quantity %></td>
+                                <td class="center"><%= product.quantity * product.prix %> €</td>
+
+                                <td>
+                                    <button type="submit" class="close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </td>
+                            </tr>
+
+                        </form>
+
+                    <% }); %>
+                    </table>
+                    <section class="sum-products">
+                        <span>Total</span><span class="space"></span><span class="glyphicon glyphicon-arrow-right"><span class="space"></span></span><span><%= sumProducts %> €</span>
+                    </section>
+                    <div>
+                        <a href="/payment"><button class= "btn btn-primary spaceTop">Commander</button></a>
+                    </div>
+                <% }else{ %>
+                    <h2>Aucun produit !!!</h2>
+                <% } %>
+                    
+        </main>
+        <% include ../end %>
+    </div>
+</body>

@@ -1,6 +1,6 @@
 .mainDiv{
   width: 50%;
-  margin: auto;
+  margin: 5rem auto;
 }
 
 table {
@@ -68,3 +68,10 @@ table {
     display:inline-block;
     width: 50px;
   }
+  @media (max-width: 768px){
+    .mainDiv{
+        width: 100%;
+        margin: 5rem 1.2rem;
+    }
+    
+}

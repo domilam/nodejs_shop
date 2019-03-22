@@ -1,37 +1,37 @@
         <div id="login-overlay" class=<% if (isHide) { %>"hide"<% }else{ %>"overlay"<% } %> >
-            <div>
-                <h1 class="main-title">Connectez-vous</h1>
-            </div>
+                        <div class="inline-centered">
+                            <h1 class="main-title">Connectez-vous</h1>
+                        </div>
+                                
+                        <form action="/login" method="POST" novalidate>
+                            <div class="product_field">
+                                <div class="form-group">
+                                    <label for="email">Email: </label>
+                                    <input
+                                    class="<%= validationErrors.find(el => el.param === 'emailLogin') ? 'inputError' : '' %>" 
+                                    type="email"
+                                    name="emailLogin"
+                                        value="<%=oldRegistration.email %>">
+                                </div>
+                                <div class="form-group">
+                                    <label for="pwd">Password: </label>
+                                    <input 
+                                        class="<%= validationErrors.find(el => el.param === 'pwdLogin') ? 'inputError' : '' %>"
+                                        type="password" 
+                                        name="pwdLogin" 
+                                        value="<%=oldRegistration.password %>">
+                                </div>
                     
-            <form action="/login" method="POST" novalidate>
-                <div class="product_field">
-                    <div class="form-group">
-                        <label for="email">Email: </label>
-                        <input
-                        class="<%= validationErrors.find(el => el.param === 'emailLogin') ? 'inputError' : '' %>" 
-                        type="email"
-                        name="emailLogin"
-                         value="<%=oldRegistration.email %>">
-                    </div>
-                    <div class="form-group">
-                        <label for="pwd">Password: </label>
-                        <input 
-                            class="<%= validationErrors.find(el => el.param === 'pwdLogin') ? 'inputError' : '' %>"
-                            type="password" 
-                            name="pwdLogin" 
-                            value="<%=oldRegistration.password %>">
-                    </div>
-        
-                </div>
-                <div>
-                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-                    <button class="btn btn-primary centered" type="submit">Login</button>
-
-                </div>
-                <div class="centered">
-                    <a href="/reset-password" class="resetPassword centered">
-                            Mot de passe oublié ?
-                    </a>
-                </div>
-            </form>
+                            </div>
+                            <div class="inline-centered">
+                                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                <button class="btn btn-primary" type="submit">Login</button>
+            
+                            </div>
+                            <div class="inline-centered">
+                                <a href="/reset-password" class="resetPassword">
+                                        Mot de passe oublié ?
+                                </a>
+                            </div>
+                        </form>
         </div>

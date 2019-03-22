@@ -1,5 +1,8 @@
 const express = require('express');
 const path = require('path');
+const fs = require('fs');
+const https = require('https');
+
 const bodyParser = require('body-parser'); /* to parse body request */
 const mongoConnect = require('./util/databaseMongo').mongoConnect;
 const session = require('express-session'); /* package to manage session with express */
@@ -13,6 +16,9 @@ const csrf = require('csurf'); /* to manage csrf protection */
 const flash = require('connect-flash'); /* package to manage message */
 const multer = require('multer'); /*multipart package */
 const moment = require('moment');
+const helmet = require('helmet'); // protect header
+const compression = require('compression'); //compression
+const morgan = require('morgan'); //package for request logging
 
 
 
@@ -23,6 +29,7 @@ const User = require('./models/userMg');
 const magasinCtrl = require('./controllers/magasinControllerMg');
 const isAuth = require('./middleware/is-auth');
 
+console.log(process.env.NODE_ENV);
 
 const app = express();
 const store = new MongoDBStore({
@@ -32,6 +39,9 @@ const store = new MongoDBStore({
 
 const csrfProtection = csrf();
 const date = new Date().toISOString().replace(/:/g,'_');
+
+// const privateKey = fs.readFileSync('server.key');
+// const certificate = fs.readFileSync('server.cert');
 
 const fileStorage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -48,8 +58,18 @@ const fileFilter = (req, file, cb) => {
         cb(null, false);
     }
 };
+
+const accesLogStream = fs.createWriteStream(
+    path.join(__dirname, 'access.log'), 
+    {flags: 'a'}
+);
+
 //set engine
 app.set('view engine', 'ejs');
+
+app.use(helmet()); // protect header
+app.use(compression());
+app.use(morgan('combined', {stream: accesLogStream}));
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -128,5 +148,6 @@ app.use((req, res, next) => {
 
 
 mongoConnect(() => {
-    app.listen(4000);
+    // https.createServer({key: privateKey, cert: certificate}, app).listen(process.env.PORT || 4000);
+    app.listen(process.env.PORT || 4000);
 });

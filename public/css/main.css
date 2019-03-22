@@ -17,7 +17,7 @@ body, html, main{
 }
 .overlay {  
     display: block;
-    position: fixed;
+    position: absolute;
     top: 25%;
     left: 25%;
     width: 50%;
@@ -28,6 +28,9 @@ body, html, main{
     margin: auto;
     color: white;
     border-radius: 20px;
+}
+.overlay .col-sm-12{
+    width: 100%;
 }
 .container-fluid{
     padding-left: 0px;
@@ -40,11 +43,8 @@ body, html, main{
     border: none;
 }
 .navbar-brand{
-    /* margin: 0 1.25rem; */
-    /* border: 1px solid red; */
     width: 8rem;
     padding: 5px 15px;
-    /* background-color: white; */
 }
 .mobile_menu{
     display: none
@@ -57,7 +57,6 @@ img{
 }
 .headerItem:hover,
 .active{
-    /* background-color: #233f08; */
     border-bottom: 3px solid white;
 }
 .navbar-default .navbar-nav > li > a:hover{
@@ -99,17 +98,59 @@ span.glyphicon-pencil{
 .col-sm-12{
     padding-right: 0px;
 }
+
+.navbar-fixed-top .navbar-collapse{
+    max-height: 100vh;
+    padding-left: 30px;
+}
+
+main{
+    margin-top: 5rem;
+}
+.side_left_menu{
+    background-color: #ee711e2c;
+    /* height: 100vh; */
+    margin-top: 20px;
+    text-align: center
+}
+.side_left_menu > p{
+font-weight: bold;
+margin-top: 10px;
+color: #ee711e;
+}
+.side_left_menu > .recherche{
+    display: flex;
+    width: 100%;
+    align-content: center
+}
+.side_left_menu input{
+    width: 80%;
+    margin-bottom: 10px;
+}
+.side_left_menu a{
+    width: 10%;
+    color: #ee711e;
+    font-weight: bold;
+    font-size: 20px;
+}
+.side_left_menu span{
+    background-color: white;
+    border: 2px solid white;
+    cursor: pointer;
+}
+
+
+
 .mainDiv .main-title{
     background-color: #f0571bcc;
     height: 50px;
     margin-bottom: 20px;
+    margin-top: 20px;
+    line-height: 1.5;
 }
-/* .main-title h1{
-    margin: 0px;
-    padding: 10px;
-    font-size: 3rem;
 
-} */
+
+
 .messageDanger{
     color: #020636;
     background-color: #f36767;
@@ -136,7 +177,6 @@ span.glyphicon-pencil{
 }
 
   button{
-    /* width: 10rem; */
     border-radius: 5px;
     font: inherit;
     margin: auto;
@@ -151,7 +191,6 @@ footer{
     text-align: center;
     padding: 0 0;
     height: 4rem;
-    /* width: 100vw; */
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     position: fixed;
     left: 0;
@@ -169,6 +208,12 @@ footer{
 .centered{
     display: block;
     margin: auto;
+}
+.inline-centered{
+    text-align: center
+}
+.inline-centered .main-title{
+    display: inline;
 }
 .btn{
     margin-left: 10px;
@@ -191,16 +236,13 @@ footer{
     background-color: #1275ff;
     font-weight: bold;
     font-size: 1.6rem;
-    /* font: inherit; */
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
     background-image: linear-gradient(#7dc5ee,#008cdd 85%,#30a2e4);
 
 }
 .btn-info{
-    /* background-color: #0a91cfad; */
     background-color: #1275ff;
-    /* font: inherit; */
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
 }
@@ -211,13 +253,15 @@ footer{
     align-items: center;
 }
 
-@media (max-width: 720px){
+@media (max-width: 767px){
     main{
         min-height: 100vh;
     
     }
     .mainDiv{
         z-index:0;
+        margin-top: 5rem;
+        margin-left: 1.5rem;
     }
     .headerItem{
         display: none;
@@ -229,9 +273,16 @@ footer{
         top: 5rem;
         left:0px;
         width: 70vw;
-        height:100vh;
+        height:100%;
 
     }
+
+    .overlay{
+        left: 0px;
+        width: 90%;
+        margin: 0 20px 0 20px;
+    }
+    
     .dropdown-menu > li > a{
         background-color: #dd7d3d;
         color: white;
@@ -239,36 +290,17 @@ footer{
     .navbar-default .navbar-nav .open .dropdown-menu > li > a{
         color: white;
     }
-    /* .mobile_menu{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        margin:0;
-        padding: 0;
-        border: 1px solid blue;
-        width: 100%;
-
+    .side_left_menu{
+        display: none;
     }
-    .mobile_menu_ligne{
-        text-align: center;
-        border-bottom: 1px solid white;
-        width: 30px;
-        margin: 5px 0;
-        list-style: none;
-
-    } */
-
     h1.main-title{
         font-size: 2rem;
         line-height: 2.2;
     
     }
-    
-}
-/* @media (max-width: 720px){
-    span.glyphicon-shopping-cart{
-        font-size: 2rem;
-        color: rgb(207, 26, 26);
+    .btn{
+        margin-top: 15px;
+        margin-bottom: 15px;
     }
     
-} */
+}

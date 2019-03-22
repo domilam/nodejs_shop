@@ -7,15 +7,13 @@
     <link rel="stylesheet" href="/css/displayCart.css">
 </head>
 <body>
-    <% include ../header %>
-    <main>
+    <div class="container-fluid">
+        <% include ../header %>
         <% include ../auth/login %>
         <% include ../auth/signup %>
         <% include ../auth/resetPassword %>
 
-
-        
-        <div class="mainDiv">
+        <main class="mainDiv row">
             <div>
                 <h1 class="main-title">PAIEMENT DE LA COMMANDE</h1>
             </div>
@@ -67,7 +65,7 @@
             <% }else{ %>
                 <h2>Aucun produit !!!</h2>
             <% } %>
-        </div>
-                
-    </main>
-<% include ../end %>
+        </main>
+        <% include ../end %>
+    </div>
+</body>

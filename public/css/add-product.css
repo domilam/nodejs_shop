@@ -1,5 +1,6 @@
 .mainDiv{
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
     width: 70%;
     min-height: 50vh;
 }
@@ -34,24 +35,30 @@ form{
 .div_button{
     text-align: center;
 }
-@media (max-width: 1220px){
+/* @media (max-width: 1220px){
     .mainDiv{
         margin: auto;
         width: 70%;
         min-height: 50vh;
     }
-}
+} */
 @media (max-width: 768px){
-    .mainDiv{
+    /* .mainDiv{
         margin: auto 10px;
         width: 100%;
-        /* min-height: 50vh; */
-    }
+    } */
     .col-sm-12{
         padding-left: 0px;
     }
     .div_button{
         text-align: center;
+    }
+    form{
+        text-align: center;
+    }
+    .product_field{
+        display: inline;
+        text-align: center
     }
     .form-group input{
         display: inline;
@@ -64,9 +71,5 @@ form{
     /* .form_element{
         text-align: center;
     } */
-    .product_field{
-        text-align: left;
-
-    }
     
 }

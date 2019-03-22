@@ -14,7 +14,7 @@ exports.addProductCtrl = (req, res, next) => {
         countProduct = req.user.countProduct();
     }
     const errors = validationResult(req);
-    res.render('admin/add-product',{
+    res.render('admin/add-productMg',{
         path: '/admin/add-product',
         countProduct: countProduct,
         errorMessage: errors.array(),

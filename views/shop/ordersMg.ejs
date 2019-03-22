@@ -6,12 +6,9 @@
     <link rel="stylesheet" href="/css/displayCart.css">
 </head>
 <body>
-    <% include ../header %>
-    <main>
-
-        
-        
-        <div class="mainDiv">
+    <div class="container-fluid">
+        <% include ../header %>
+        <main class="mainDiv row">
             <div>
                 <h1 class="main-title">MES COMMANDES</h1>
             </div>
@@ -51,7 +48,7 @@
             <% }else{ %>
                 <h2>Aucune commande !!!</h2>
             <% } %>
-        </div>
-                
-    </main>
-<% include ../end %>
+        </main>
+        <% include ../end %>
+    </div>
+</body>

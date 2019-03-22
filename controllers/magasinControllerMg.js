@@ -5,11 +5,11 @@ const adminController = require('./adminControllerMg');
 const mongodb = require('mongodb');
 const getDb = require('../util/databaseMongo').getDb;
 const ObjectId = mongodb.ObjectId;
+const stripe = require('../util/keys').stripeKey;
+
 const User = require('../models/userMg');
 const Product = require('../models/productMg').products;
 const limit_per_page = require('../models/productMg').limit_prod
-const stripe = require("stripe")("sk_test_kdYtScGYfWZ528mQtGdqmBS2");
-
 
 exports.indexCtrl = (req, res, next) => {
     let countProduct;
@@ -36,15 +36,17 @@ exports.indexCtrl = (req, res, next) => {
         res.locals.isHide = false;
     }
     console.log(req.flash('error'));
-    res.render('index.ejs', {
-        path: '/',
-        countProduct: countProduct,
-        errorMessage: errorMessage,
-        hide: hide,
-        validationErrors: [],
+    
+    // res.render('index.ejs', {
+    //     path: '/',
+    //     countProduct: countProduct,
+    //     errorMessage: errorMessage,
+    //     hide: hide,
+    //     validationErrors: [],
 
-        oldRegistration: {}
-    });
+    //     oldRegistration: {}
+    // });
+    res.redirect('/products');
 };
 
 exports.displayCart = (req, res, next) => {
@@ -193,7 +195,7 @@ exports.getPayment = (req, res, next) => {
         });
         console.log('++++++++++++++++++++++',sumProducts);
  
-        res.render('shop/payment', {
+        res.render('shop/paymentMg', {
             products: products,
             path: '/payment',
             countProduct: countProduct,
