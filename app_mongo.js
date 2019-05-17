@@ -25,6 +25,8 @@ const morgan = require('morgan'); //package for request logging
 const adminRoutes = require('./routes/adminMg');
 const magasinRoutes =  require('./routes/magasinMg');
 const authRoutes = require('./routes/auth');
+const apiRoutes = require('./routes/api');
+
 const User = require('./models/userMg');
 const magasinCtrl = require('./controllers/magasinControllerMg');
 const isAuth = require('./middleware/is-auth');
@@ -82,6 +84,13 @@ app.use(session({
     store: store
 }));
 
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    next();
+});
+
 
 app.use(flash());
 
@@ -131,6 +140,7 @@ app.use((req, res, next) => {
 app.use('/admin', adminRoutes);
 app.use(magasinRoutes);
 app.use(authRoutes);
+app.use(apiRoutes);
 app.use('/500', (req, res, next) => {
     res.status(500).render('error/page500.ejs', {
         path: '/',
