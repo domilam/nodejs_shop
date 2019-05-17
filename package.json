@@ -29,9 +29,12 @@
     "stripe": "^6.25.1",
     "validator": "^10.11.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.0.2"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha",
     "start": "set SQL_USER=root&&set SQL_PASSWORD=sLb69z2Q&&set NODE_ENV=production&&set MONGO_USER=dominique&&set MONGO_PASSWORD=dGpHfPLFuG6omh8J&&set MONGO_DEFAULT_DATABASE=shop&&set STRIPE_KEY=sk_test_kdYtScGYfWZ528mQtGdqmBS2&&set MAILER_USER=contact@japplique.com&&set MAILER_PASSWORD=cntDla972&& node app_mongo.js",
     "start-server": "nodemon app.js",
     "start-dev": "nodemon app_mongo.js"

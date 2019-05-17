@@ -2,3 +2,5 @@ node_modules
 controllers/readme.md
 util/oldkeys.js
 nodemon.json
+package.json
+test
